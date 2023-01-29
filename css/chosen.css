@@ -1,0 +1,152 @@
+h2 {
+  margin: 16px;
+}
+
+.container {
+  margin-top: 100px;
+  padding: 32px;
+}
+
+.select-box {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.select-box .options-container {
+  background: white;
+  color: #AB8DF8;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 8px;
+  overflow: hidden;
+
+  order: 1;
+}
+
+.selected {
+  background: #FFFFFF;
+      border: 1px solid #DEDEDE;
+      box-sizing: border-box;
+      border-radius: 22px;
+      font-family: Muller;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 53px;
+      padding: 25px 30px;
+      color: #AB8DF8;
+      width: 100%;
+}
+
+.selected::after {
+  content: "";
+  background: url("../image/select.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  height: 100%;
+  width: 24px;
+  right: 20px;
+  top: 25px;
+
+  transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+  max-height: 140px;
+  opacity: 1;
+  overflow-y: scroll;
+  z-index: 66;
+position: absolute;
+margin-top: 80px;
+border: 1px solid;
+border-top: 0px;
+}
+
+.select-box .options-container.active + .selected::after {
+  transform: rotateX(180deg);
+  top: -25px;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+  width: 8px;
+  background: white;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+  background: #AB8DF8;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .option,
+.selected {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.select-box .option:hover {
+  background:  #AB8DF8;
+  color: white
+}
+
+.select-box label {
+  cursor: pointer;
+}
+
+.select-box .option .radio {
+  display: none;
+}
+
+/* Searchbox */
+
+.search-box input {
+width: calc(100% - 24px);  padding: 18px 12px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  position: absolute;
+  border-radius: 1px 1px 0 0;
+  z-index: 100;
+  border-top: 0px;
+  border-bottom: 1px solid #DEDEDE;
+  border-left: 1px solid #DEDEDE;
+  border-right: 1px solid #DEDEDE;
+  border-radius: 22px;
+
+
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+.select-box .options-container.active ~ .search-box input {
+  opacity: 1;
+  pointer-events: auto;
+  background: #FFFFFF;
+  border: 1px solid #DEDEDE;
+  box-sizing: border-box;
+  border-radius: 22px;
+  font-family: Muller;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 53px;
+  padding: 13px 30px;
+  color: #AB8DF8;
+  width: 100%;
+}
+@media screen and (max-width: 480px){
+.selected{
+  font-size: 25px;
+  padding-left: 10px;
+}
+}
